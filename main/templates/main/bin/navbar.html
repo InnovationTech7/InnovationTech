@@ -1,0 +1,36 @@
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light bg-transparent" id="gtco-main-nav">
+    <div class="container"><a class="navbar-brand text-light" href="/"> InnovTech</a>
+        <button class="navbar-toggler" data-target="#my-nav" onclick="myFunction(this)" data-toggle="collapse"><span
+                class="bar1"></span> <span class="bar2"></span> <span class="bar3"></span></button>
+        <div id="my-nav" class="collapse navbar-collapse">
+            {% if not user.is_authenticated %}
+
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item"><a class="nav-link" href="/cours">Cours</a></li>
+                <li class="nav-item"><a class="nav-link" href="">Tutoriels</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact">Community</a></li>
+                <li class="nav-item"><a class="nav-link" href="">FAQ</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+
+
+            </ul>
+            {% endif%}
+            {% if user.is_authenticated %}
+            <ul class="navbar-nav mr-auto">
+            <li class="nav-item"><a class="nav-link" href="/cours">Parcours</a></li>
+            <li class="nav-item"><a class="nav-link" href="">Mes cours</a></li>
+            <li class="nav-item"><a class="nav-link" href="">Community</b></a></li>
+            <li class="nav-item"><a class="nav-link" href="">FAQ</a></li>
+
+
+
+            {% else %}
+            <form class="form-inline my-2 my-lg-0">
+                <a href="/connexion" class="btn btn-dark my-2 my-sm-0 mr-3">Connexion</a> <a href="/inscription"                          
+                                                                                 class="btn btn-info my-2 my-sm-0">Inscription</a>
+            </form>
+            {% endif %}
+        </div>
+    </div>
+</nav>

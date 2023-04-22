@@ -1,0 +1,180 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %} Nos cours {% endblock%}
+
+
+{% block main%}
+<style>
+    #grid-items {
+      display: none;
+    }
+   
+  </style>
+
+<section class="container bg-ligth my-3 course-list">
+<nav aria-label=" breadcrumb ">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active">Accueil</li>
+        <li class="breadcrumb-item" aria-current="page">Cours</li>
+
+    </ol>
+</nav>
+<div class="container my-5">
+    <div class="row">
+      <div class="col">
+        <h2>Nos Cours</h2>
+      </div>
+      <div class="col-auto">
+        <div class="input-group">
+          <input type="text"  name="q" class="form-control" placeholder="Rechercher des cours">
+          <button class="btn btn-info text-light" type="button">Rechercher</button>
+        </div>
+      </div>
+      <div class="col-auto">
+        <div class="btn-group" role="group" aria-label="Affichage">
+          <button type="button" class="btn btn-light active" id="list">
+            <i class="fa fa-th-list"></i>
+
+        </button>
+          <button type="button" class="btn btn-light" id="grid">
+            <i class="fa fa-th"></i>
+
+
+
+
+        </button>
+        </div>
+      </div>
+    </div>
+
+    <ul class="list-group my-4" id="list-items">
+        <li class="list-group-item">
+          {% for course in course %}
+
+         <div class="card mb-4 shadow-sm">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <img src="{% static 'images/news1.jpg' %}" class="card-img" alt="Image du cours">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title"><b>{{course.name}}</b></h5>
+              <p class="card-text text-primary">
+                <i class="fa fa-clock-o"></i> 2 heures |
+                <i class="fa fa-level-low"></i> Niveau: {{course.level}} |
+                <i class="fa fa-users"></i> {{course.student_count}}
+              </p>
+              <p class="card-text">{{course.overview}}</p>
+              <p class="card-text"><small class="text-muted"><i class="fa fa-dollar"></i> Gratuite</small></p>
+              <hr><div class="d-flex justify-content-end align-items-center">
+                <a href="{% url 'cours' course.slug %}" class="btn btn-primary">Voir Plus</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>{% endfor %}
+
+</li>
+            
+          
+    </ul>
+
+    <div class="row my-4" id="grid-items">
+      {% for course in course%}
+
+        <div class="col-sm-6 col-md-4 col-lg-3">
+                <a href="{% url 'cours' course.slug %}">
+                  <div class="card mb-4 shadow-sm">
+                  <img src="{% static 'images/news1.jpg' %}" class="card-img-top" alt="Image du cours">
+                  <div class="card-body">
+                    <a href=""> {{course.instructor.name}}</a><br>
+                    <a href="{% url 'cours' course.slug %}" style="color:black;text-decoration:none;">
+                      <h6 class="card-title"><b>{{course.name}}</b></h6></a><hr>
+                    <p class="card-text text-primary">
+                    <div class="d-flex justify-content-center align-items-center">
+                        <hr>
+                    <p class="card-text"><small class="text-muted"><i class="fa fa-dollar"></i>Gratuite</small></p>
+
+                    </div></div>
+              </div></a>
+              
+
+    </div>              {% endfor%}
+
+</div>  
+
+
+            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/esm/popper.min.js"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.min.js"></script>        
+    <script>
+        const listButton = document.querySelector('#list');
+        const gridButton = document.querySelector('#grid');
+        const listItems = document.querySelector('#list-items');
+        const gridItems = document.querySelector('#grid-items');
+    
+        listButton.addEventListener('click', () => {
+          listButton.classList.add('active');
+          gridButton.classList.remove('active');
+          listItems.style.display = 'block';
+          gridItems.style.display = 'none';
+        });
+    
+        gridButton.addEventListener('click', () => {
+          gridButton.classList.add('active');
+          listButton.classList.remove('active');
+          gridItems.style.display = 'flex';
+          listItems.style.display = 'none';
+        });
+      </script>
+    </body>
+    </html>
+
+
+
+
+
+   
+<pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+{% endblock%}
